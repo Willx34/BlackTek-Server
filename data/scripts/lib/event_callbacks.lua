@@ -132,7 +132,6 @@ setmetatable(EventCallback, {
 
 			return rawget(self, key)
 		end
-
 		local eventData = EventCallbackData[callback]
 		local maxn = eventData.maxn
 		if maxn == 0 then

@@ -15,6 +15,4 @@ config.lua
 
 # CLion and other JetBrains tools
 /.idea
-
-#map file too large
-/data/world/*
+data/world/forgotten.otbm

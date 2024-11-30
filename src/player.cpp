@@ -1740,20 +1740,25 @@ void Player::removeManaSpent(uint64_t amount, bool notify/* = false*/)
 
 void Player::addExperience(Creature* source, uint64_t exp, bool sendText/* = false*/)
 {
-	uint64_t currLevelExp = Player::getExpForLevel(level);
-	uint64_t nextLevelExp = Player::getExpForLevel(level + 1);
-	uint64_t rawExp = exp;
-	if (currLevelExp >= nextLevelExp) {
-		//player has reached max level
-		levelPercent = 0;
-		sendStats();
-		return;
-	}
+    uint64_t currLevelExp = Player::getExpForLevel(level);
+    uint64_t nextLevelExp = Player::getExpForLevel(level + 1);
+    uint64_t rawExp = exp;
 
-	g_events->eventPlayerOnGainExperience(this, source, exp, rawExp);
-	if (exp == 0) {
-		return;
-	}
+    if (currLevelExp >= nextLevelExp) {
+        //player has reached max level
+        levelPercent = 0;
+        sendStats();
+        return;
+    }
+
+    float multiplier = g_config.getExperienceStage(level);
+    exp *= multiplier;
+
+    g_events->eventPlayerOnGainExperience(this, source, exp, rawExp);
+    if (exp == 0) {
+        return;
+    }
+
 
 	experience += exp;
 

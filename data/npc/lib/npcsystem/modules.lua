@@ -218,6 +218,39 @@ if Modules == nil then
 		return true
 	end
 
+	--inserted code to fix WM
+
+	-- Set custom greeting messages
+	function FocusModule:addGreetMessage(message)
+		if not self.greetWords then
+			self.greetWords = {}
+		end
+
+
+		if type(message) == 'string' then
+			table.insert(self.greetWords, message)
+		else
+			for i = 1, #message do
+				table.insert(self.greetWords, message[i])
+			end
+		end
+	end
+
+	-- Set custom farewell messages
+	function FocusModule:addFarewellMessage(message)
+		if not self.farewellWords then
+			self.farewellWords = {}
+		end
+
+		if type(message) == 'string' then
+			table.insert(self.farewellWords, message)
+		else
+			for i = 1, #message do
+				table.insert(self.farewellWords, message[i])
+			end
+		end
+	end
+
 	-- Greeting callback function.
 	function FocusModule.onGreet(cid, message, keywords, parameters)
 		return parameters.module.npcHandler:onGreet(cid)
@@ -1066,32 +1099,38 @@ if Modules == nil then
 		if not module.npcHandler:isFocused(cid) then
 			return false
 		end
-
-		if not module.npcHandler:onTradeRequest(cid) then
-			return false
-		end
-
+	
 		local itemWindow = {}
 		for i = 1, #module.npcHandler.shopItems do
-			itemWindow[#itemWindow + 1] = module.npcHandler.shopItems[i]
+			local shopItem = module.npcHandler.shopItems[i]
+			-- Create temporary item to access core description system
+			local tempItem = Game.createItem(shopItem.id, 1)
+			local itemType = ItemType(shopItem.id)
+			
+			itemWindow[#itemWindow + 1] = {
+				id = shopItem.id,
+				subType = shopItem.subType or 0,
+				buy = shopItem.buy,
+				sell = shopItem.sell,
+				name = itemType:getName(),
+				article = itemType:getArticle(),
+				description = tempItem:getDescription(1) -- Pass distance parameter
+			}
+			tempItem:remove()
 		end
-
-		if itemWindow[1] == nil then
-			local parseInfo = {[TAG_PLAYERNAME] = Player(cid):getName()}
-			local msg = module.npcHandler:parseMessage(module.npcHandler:getMessage(MESSAGE_NOSHOP), parseInfo)
-			module.npcHandler:say(msg, cid)
-			return true
-		end
-
-		local parseInfo = {[TAG_PLAYERNAME] = Player(cid):getName()}
-		local msg = module.npcHandler:parseMessage(module.npcHandler:getMessage(MESSAGE_SENDTRADE), parseInfo)
+	
 		openShopWindow(cid, itemWindow,
-			function(cid, itemid, subType, amount, ignoreCap, inBackpacks) module.npcHandler:onBuy(cid, itemid, subType, amount, ignoreCap, inBackpacks) end,
-			function(cid, itemid, subType, amount, ignoreCap, inBackpacks) module.npcHandler:onSell(cid, itemid, subType, amount, ignoreCap, inBackpacks) end)
-		module.npcHandler:say(msg, cid)
+			function(cid, itemid, subType, amount, ignoreCap, inBackpacks) 
+				return module.npcHandler:onBuy(cid, itemid, subType, amount, ignoreCap, inBackpacks) 
+			end,
+			function(cid, itemid, subType, amount, ignoreCap, inBackpacks) 
+				return module.npcHandler:onSell(cid, itemid, subType, amount, ignoreCap, inBackpacks) 
+			end)
+	
 		return true
 	end
-
+		
+	
 	-- onConfirm keyword callback function. Sells/buys the actual item.
 	function ShopModule.onConfirm(cid, message, keywords, parameters, node)
 		local module = parameters.module

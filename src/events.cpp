@@ -731,7 +731,6 @@ bool Events::eventPlayerOnLookInShop(Player* player, const ItemType* itemType, u
 
 	lua_pushnumber(L, count);
 	lua_pushstring(L, description.c_str());
-
 	return scriptInterface.callFunction(4);
 }
 

@@ -801,4 +801,10 @@
 	<instant name="pirate corsair skill reducer" words="###49" direction="1" aggressive="1" blockwalls="1" needtarget="0" needlearn="1" script="monster/pirate_corsair_skill_reducer.lua" />
 	<instant name="monster soulfire" words="###50" aggressive="1" blockwalls="1" range="7" needtarget="1" needlearn="1" script="monster/monster_soulfire.lua" />
 	<instant name="dipthrah skill reducer" words="###51" aggressive="1" blockwalls="1" needtarget="0" needlearn="1" script="monster/dipthrah_skill_reducer.lua" />
+	<instant name="renegade knight" words="##400" aggressive="0" blockwalls="1" needtarget="0" needlearn="1" script="monster/renegade knight.lua"/>
+	<instant name="vile grandmaster" words="##401" aggressive="0" blockwalls="1" needtarget="0" needlearn="1" script="monster/vile grandmaster.lua"/>
+	<instant name="woodling paralyze" words="###375" direction="1" aggressive="1" blockwalls="1" needtarget="0" needlearn="1" script="monster/woodling paralyze.lua"/>
+	<instant name="salamander trainer summon" words="##374" aggressive="0" blockwalls="1" needtarget="0" needlearn="1" script="monster/salamander trainer summon.lua"/>
+	<instant name="seacrest serpent wave" words="###373" direction="1" aggressive="1" blockwalls="1" needtarget="0" needlearn="1" script="monster/seacrest serpent wave.lua" />
+
 </spells>

@@ -55,14 +55,14 @@ function Game.getSkillType(weaponType)
 	return SKILL_FIST
 end
 
-if not globalStorageTable then
-	globalStorageTable = {}
+if not GlobalStorageTable then
+	GlobalStorageTable = {}
 end
 
 function Game.getStorageValue(key)
-	return globalStorageTable[key] or -1
+	return GlobalStorageTable[key] or -1
 end
 
 function Game.setStorageValue(key, value)
-	globalStorageTable[key] = value
+	GlobalStorageTable[key] = value
 end

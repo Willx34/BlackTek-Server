@@ -96,18 +96,20 @@ namespace {
 ExperienceStages loadLuaStages(lua_State* L)
 {
 	ExperienceStages stages;
-
+	
 	lua_getglobal(L, "experienceStages");
 	if (!lua_istable(L, -1)) {
+		std::cout << "[Debug - ConfigManager] Experience stages table not found in config.lua" << std::endl;
 		return {};
 	}
-
+	
 	lua_pushnil(L);
 	while (lua_next(L, -2) != 0) {
 		const auto tableIndex = lua_gettop(L);
 		auto minLevel = LuaScriptInterface::getField<uint32_t>(L, tableIndex, "minlevel", 1);
-		auto maxLevel =	LuaScriptInterface::getField<uint32_t>(L, tableIndex, "maxlevel", std::numeric_limits<uint32_t>::max());
+		auto maxLevel = LuaScriptInterface::getField<uint32_t>(L, tableIndex, "maxlevel", std::numeric_limits<uint32_t>::max());
 		auto multiplier = LuaScriptInterface::getField<float>(L, tableIndex, "multiplier", 1);
+		
 		stages.emplace_back(minLevel, maxLevel, multiplier);
 		lua_pop(L, 4);
 	}
@@ -116,7 +118,6 @@ ExperienceStages loadLuaStages(lua_State* L)
 	std::sort(stages.begin(), stages.end());
 	return stages;
 }
-
 ExperienceStages loadXMLStages()
 {
 	pugi::xml_document doc;

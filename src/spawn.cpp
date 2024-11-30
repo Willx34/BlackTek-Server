@@ -55,10 +55,10 @@ bool Spawns::loadFromXml(const std::string& filename)
 			std::cout << "[Warning - Spawns::loadFromXml] Radius size bigger than 30 at position: " << centerPos << ", consider lowering it." << std::endl;
 		}
 
-		if (!spawnNode.first_child()) {
-			std::cout << "[Warning - Spawns::loadFromXml] Empty spawn at position: " << centerPos << " with radius: " << radius << '.' << std::endl;
-			continue;
-		}
+		// if (!spawnNode.first_child()) {
+		// 	std::cout << "[Warning - Spawns::loadFromXml] Empty spawn at position: " << centerPos << " with radius: " << radius << '.' << std::endl;
+		// 	continue;
+		// }
 
 		spawnList.emplace_front(centerPos, radius);
 		Spawn& spawn = spawnList.front();
