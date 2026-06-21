@@ -39,3 +39,5 @@ boot*.log
 /data/world/realmap1098.otbm
 /config/database.toml
 /_bak_npclib_blacktek/
+/_bak_actions_blacktek/
+/_bak_movements_blacktek/
