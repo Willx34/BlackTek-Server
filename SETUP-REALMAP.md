@@ -8,10 +8,9 @@ it's published as a **GitHub Release asset** and fetched with a script. Everythi
 ## Setting up on a new device
 
 ```bash
-# 1. Clone your fork and switch to the integration branch
+# 1. Clone your fork (the real-map integration is on the default branch, master)
 git clone https://github.com/Willx34/BlackTek-Server.git
 cd BlackTek-Server
-git checkout realmap-1098-integration
 
 # 2. Fetch the large map file from the Release (needs `gh` authenticated)
 #    Windows:
