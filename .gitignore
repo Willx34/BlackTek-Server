@@ -38,3 +38,4 @@ boot*.log
 /data/world/_backup_forgotten/
 /data/world/realmap1098.otbm
 /config/database.toml
+/_bak_npclib_blacktek/

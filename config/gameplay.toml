@@ -68,7 +68,7 @@ maximum_invite_count = 20
 
 [world]
 # If default_world_light = false, use setWorldLight(level, color) from scripts instead
-default_world_light    = true
+default_world_light    = false
 clean_protection_zones = false
 
 [augments]

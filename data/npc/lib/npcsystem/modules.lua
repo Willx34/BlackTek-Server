@@ -76,7 +76,7 @@ if Modules == nil then
 		local player = Player(cid)
 		if player:isPremium() or not parameters.premium then
 			local promotion = player:getVocation():getPromotion()
-			if player:getStorageValue(PlayerStorageKeys.promotion) == 1 then
+			if player:getStorageValue(STORAGEVALUE_PROMOTION) == 1 then
 				npcHandler:say("You are already promoted!", cid)
 			elseif player:getLevel() < parameters.level then
 				npcHandler:say("I am sorry, but I can only promote you once you have reached level " .. parameters.level .. ".", cid)
@@ -85,7 +85,7 @@ if Modules == nil then
 			else
 				npcHandler:say(parameters.text, cid)
 				player:setVocation(promotion)
-				player:setStorageValue(PlayerStorageKeys.promotion, 1)
+				player:setStorageValue(STORAGEVALUE_PROMOTION, 1)
 			end
 		else
 			npcHandler:say("You need a premium account in order to get promoted.", cid)
@@ -195,6 +195,11 @@ if Modules == nil then
 		local obj = {}
 		setmetatable(obj, self)
 		self.__index = self
+		
+		-- FIX
+		obj.greetMessages = {} -- table for storing extra greet messages
+		obj.farewellMessages = {}
+		
 		return obj
 	end
 
@@ -217,10 +222,48 @@ if Modules == nil then
 
 		return true
 	end
+	
+	-- FIX
+	function FocusModule:addGreetMessage(msg)
+		self.greetMessages[#self.greetMessages + 1] = msg
+	end
+	
+	-- FIX
+	function FocusModule:addFarewellMessage(msg)
+		self.farewellMessages[#self.farewellMessages + 1] = msg
+	end
+
+	-- FIX
+	-- Patch init to register stored greetMessages
+	local oldFocusInit = FocusModule.init
+	function FocusModule:init(handler)
+		-- Copy your old FOCUS_GREETWORDS first
+		local oldGreetings = FOCUS_GREETWORDS
+		local oldFarewells = FOCUS_FAREWELLWORDS
+		
+		-- Build a combined table
+		local combinedGreetings = {}
+		for i, word in pairs(oldGreetings) do combinedGreetings[#combinedGreetings + 1] = word end
+		for i, word in pairs(self.greetMessages) do combinedGreetings[#combinedGreetings + 1] = word end
+		FOCUS_GREETWORDS = combinedGreetings
+		
+		local combinedFarewells = {}
+		for i, word in pairs(oldFarewells) do combinedFarewells[#combinedFarewells + 1] = word end
+		for i, word in pairs(self.farewellMessages) do combinedFarewells[#combinedFarewells + 1] = word end
+		FOCUS_FAREWELLWORDS = combinedFarewells
+
+		-- Call original init
+		oldFocusInit(self, handler)
+
+		-- Restore original FOCUS_GREETWORDS
+		FOCUS_GREETWORDS = oldGreetings
+		FOCUS_FAREWELLWORDS = oldFarewells
+	end
 
 	-- Greeting callback function.
 	function FocusModule.onGreet(cid, message, keywords, parameters)
-		return parameters.module.npcHandler:onGreet(cid)
+		parameters.module.npcHandler:onGreet(cid)
+		return true
 	end
 
 	-- UnGreeting callback function.
@@ -517,8 +560,6 @@ if Modules == nil then
 			else
 				msg = msg .. ", "
 			end
-			local i = i
-			i = i + 1
 		end
 
 		module.npcHandler:say(msg, cid)
@@ -567,73 +608,51 @@ if Modules == nil then
 	-- Parse a string contaning a set of buyable items.
 	function ShopModule:parseBuyable(data)
 		local alreadyParsedIds = {}
-		for item in string.gmatch(data, "[^;]+") do
-			local i = 1
 
-			local name = nil
-			local itemid = nil
-			local cost = nil
-			local subType = nil
-			local realName = nil
+		for rawItem in string.gmatch(data, "[^;]+") do
+			local item = rawItem:match("^%s*(.-)%s*$")
+			if item ~= "" then
+				local i = 1
+				local name, itemid, cost, subType, realName
 
-			for temp in string.gmatch(item, "[^,]+") do
-				if i == 1 then
-					name = temp
-				elseif i == 2 then
-					itemid = tonumber(temp)
-				elseif i == 3 then
-					cost = tonumber(temp)
-				elseif i == 4 then
-					subType = tonumber(temp)
-				elseif i == 5 then
-					realName = temp
-				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in buyable items parameter.", temp, item)
-				end
-				i = i + 1
-			end
-
-			local it = ItemType(itemid)
-			if it:getId() == 0 then
-				-- invalid item
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Item id missing (or invalid) for parameter item:", item)
-			else
-				if alreadyParsedIds[itemid] then
-					if table.contains(alreadyParsedIds[itemid], subType or -1) then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Found duplicated item:", item)
-					else
-						table.insert(alreadyParsedIds[itemid], subType or -1)
+				for rawTemp in string.gmatch(item, "[^,]+") do
+					local temp = rawTemp:match("^%s*(.-)%s*$")
+					if i == 1 then
+						name = temp
+					elseif i == 2 then
+						itemid = tonumber(temp)
+					elseif i == 3 then
+						cost = tonumber(temp)
+					elseif i == 4 then
+						subType = tonumber(temp)
+					elseif i == 5 then
+						realName = temp
 					end
-				else
-					alreadyParsedIds[itemid] = {subType or -1}
+					i = i + 1
 				end
-			end
 
-			if subType == nil and it:getCharges() ~= 0 then
-				subType = it:getCharges()
-			end
+				if not subType then
+					subType = 0
+				end
 
-			if SHOPMODULE_MODE == SHOPMODULE_MODE_TRADE then
+				local it = ItemType(itemid or 0)
+				if it:getId() == 0 then
+					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Invalid item:", item)
+				else
+					alreadyParsedIds[itemid] = alreadyParsedIds[itemid] or {}
+					if table.contains(alreadyParsedIds[itemid], subType) then
+						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Duplicate item:", item)
+					else
+						table.insert(alreadyParsedIds[itemid], subType)
+					end
+				end
+
 				if itemid and cost then
-					if subType == nil and it:isFluidContainer() then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
-					else
+					if SHOPMODULE_MODE == SHOPMODULE_MODE_TRADE then
 						self:addBuyableItem(nil, itemid, cost, subType, realName)
-					end
-				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", itemid, cost)
-				end
-			else
-				if name and itemid and cost then
-					if subType == nil and it:isFluidContainer() then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
 					else
-						local names = {}
-						names[#names + 1] = name
-						self:addBuyableItem(names, itemid, cost, subType, realName)
+						self:addBuyableItem({ name }, itemid, cost, subType, realName)
 					end
-				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, itemid, cost)
 				end
 			end
 		end
@@ -642,61 +661,51 @@ if Modules == nil then
 	-- Parse a string contaning a set of sellable items.
 	function ShopModule:parseSellable(data)
 		local alreadyParsedIds = {}
-		for item in string.gmatch(data, "[^;]+") do
-			local i = 1
 
-			local name = nil
-			local itemid = nil
-			local cost = nil
-			local realName = nil
-			local subType = nil
+		for rawItem in string.gmatch(data, "[^;]+") do
+			local item = rawItem:match("^%s*(.-)%s*$")
+			if item ~= "" then
+				local i = 1
+				local name, itemid, cost, realName, subType
 
-			for temp in string.gmatch(item, "[^,]+") do
-				if i == 1 then
-					name = temp
-				elseif i == 2 then
-					itemid = tonumber(temp)
-				elseif i == 3 then
-					cost = tonumber(temp)
-				elseif i == 4 then
-					realName = temp
-				elseif i == 5 then
-					subType = tonumber(temp)
-				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in sellable items parameter.", temp, item)
-				end
-				i = i + 1
-			end
-
-			local it = ItemType(itemid)
-			if it:getId() == 0 then
-				-- invalid item
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Item id missing (or invalid) for parameter item:", item)
-			else
-				if alreadyParsedIds[itemid] then
-					if table.contains(alreadyParsedIds[itemid], subType or -1) then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Found duplicated item:", item)
-					else
-						table.insert(alreadyParsedIds[itemid], subType or -1)
+				for rawTemp in string.gmatch(item, "[^,]+") do
+					local temp = rawTemp:match("^%s*(.-)%s*$")
+					if i == 1 then
+						name = temp
+					elseif i == 2 then
+						itemid = tonumber(temp)
+					elseif i == 3 then
+						cost = tonumber(temp)
+					elseif i == 4 then
+						realName = temp
+					elseif i == 5 then
+						subType = tonumber(temp)
 					end
-				else
-					alreadyParsedIds[itemid] = {subType or -1}
+					i = i + 1
 				end
-			end
 
-			if SHOPMODULE_MODE == SHOPMODULE_MODE_TRADE then
-				if itemid and cost then
-					self:addSellableItem(nil, itemid, cost, realName, subType)
-				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", itemid, cost)
+				if not subType then
+					subType = 0
 				end
-			else
-				if name and itemid and cost then
-					local names = {}
-					names[#names + 1] = name
-					self:addSellableItem(names, itemid, cost, realName, subType)
+
+				local it = ItemType(itemid or 0)
+				if it:getId() == 0 then
+					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Invalid item:", item)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, itemid, cost)
+					alreadyParsedIds[itemid] = alreadyParsedIds[itemid] or {}
+					if table.contains(alreadyParsedIds[itemid], subType) then
+						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Duplicate item:", item)
+					else
+						table.insert(alreadyParsedIds[itemid], subType)
+					end
+				end
+
+				if itemid and cost then
+					if SHOPMODULE_MODE == SHOPMODULE_MODE_TRADE then
+						self:addSellableItem(nil, itemid, cost, realName, subType)
+					else
+						self:addSellableItem({ name }, itemid, cost, realName, subType)
+					end
 				end
 			end
 		end
@@ -704,45 +713,39 @@ if Modules == nil then
 
 	-- Parse a string contaning a set of buyable items.
 	function ShopModule:parseBuyableContainers(data)
-		for item in string.gmatch(data, "[^;]+") do
-			local i = 1
+		for rawItem in string.gmatch(data, "[^;]+") do
+			local item = rawItem:match("^%s*(.-)%s*$")
+			if item ~= "" then
+				local i = 1
+				local name, container, itemid, cost, subType, realName
 
-			local name = nil
-			local container = nil
-			local itemid = nil
-			local cost = nil
-			local subType = nil
-			local realName = nil
-
-			for temp in string.gmatch(item, "[^,]+") do
-				if i == 1 then
-					name = temp
-				elseif i == 2 then
-					itemid = tonumber(temp)
-				elseif i == 3 then
-					itemid = tonumber(temp)
-				elseif i == 4 then
-					cost = tonumber(temp)
-				elseif i == 5 then
-					subType = tonumber(temp)
-				elseif i == 6 then
-					realName = temp
-				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in buyable items parameter.", temp, item)
+				for rawTemp in string.gmatch(item, "[^,]+") do
+					local temp = rawTemp:match("^%s*(.-)%s*$")
+					if i == 1 then
+						name = temp
+					elseif i == 2 then
+						container = tonumber(temp)
+					elseif i == 3 then
+						itemid = tonumber(temp)
+					elseif i == 4 then
+						cost = tonumber(temp)
+					elseif i == 5 then
+						subType = tonumber(temp)
+					elseif i == 6 then
+						realName = temp
+					end
+					i = i + 1
 				end
-				i = i + 1
-			end
 
-			if name and container and itemid and cost then
-				if subType == nil and ItemType(itemid):isFluidContainer() then
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
-				else
-					local names = {}
-					names[#names + 1] = name
-					self:addBuyableItemContainer(names, container, itemid, cost, subType, realName)
+				if not subType then
+					subType = 0
 				end
-			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, container, itemid, cost)
+
+				if name and container and itemid and cost then
+					self:addBuyableItemContainer({ name }, container, itemid, cost, subType, realName)
+				else
+					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Invalid container entry:", item)
+				end
 			end
 		end
 	end
@@ -809,17 +812,22 @@ if Modules == nil then
 	--	realName - The real, full name for the item. Will be used as ITEMNAME in MESSAGE_ONBUY and MESSAGE_ONSELL if defined. Default value is nil (ItemType(itemId):getName() will be used)
 	function ShopModule:addBuyableItem(names, itemid, cost, itemSubType, realName)
 		if SHOPMODULE_MODE ~= SHOPMODULE_MODE_TALK then
-			if itemSubType == nil then
-				itemSubType = 1
-			end
+			itemSubType = itemSubType or 1
 			local it = ItemType(itemid)
+
 			if it:getId() ~= 0 then
 				local shopItem = self:getShopItem(itemid, itemSubType)
 				if shopItem == nil then
-					self.npcHandler.shopItems[#self.npcHandler.shopItems + 1] = {id = itemid, buy = cost, sell = 0, subType = itemSubType, name = realName or it:getName()}
+					self.npcHandler.shopItems[#self.npcHandler.shopItems + 1] = {
+						id = itemid,
+						buy = cost,
+						sell = 0, -- FIX: was -1
+						subType = itemSubType,
+						name = realName or it:getName()
+					}
 				else
-					if cost < shopItem.sell then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem: Buy price lower than sell price: (".. shopItem.name ..")")
+					if shopItem.sell > 0 and cost < shopItem.sell then
+						print("[Warning : " .. Npc():getName() .. "] NpcSystem: Buy price lower than sell price: (" .. shopItem.name .. ")")
 					end
 					shopItem.buy = cost
 				end
@@ -827,19 +835,17 @@ if Modules == nil then
 		end
 
 		if names and SHOPMODULE_MODE ~= SHOPMODULE_MODE_TRADE then
-			for i, name in pairs(names) do
+			for _, name in pairs(names) do
 				local parameters = {
-						itemid = itemid,
-						cost = cost,
-						eventType = SHOPMODULE_BUY_ITEM,
-						module = self,
-						realName = realName or ItemType(itemid):getName(),
-						subType = itemSubType or 1
-					}
+					itemid = itemid,
+					cost = cost,
+					eventType = SHOPMODULE_BUY_ITEM,
+					module = self,
+					realName = realName or ItemType(itemid):getName(),
+					subType = itemSubType or 1
+				}
 
-				keywords = {}
-				keywords[#keywords + 1] = "buy"
-				keywords[#keywords + 1] = name
+				local keywords = {"buy", name}
 				local node = self.npcHandler.keywordHandler:addKeyword(keywords, ShopModule.tradeItem, parameters)
 				node:addChildKeywordNode(self.yesNode)
 				node:addChildKeywordNode(self.noNode)
@@ -909,17 +915,22 @@ if Modules == nil then
 	--	realName - The real, full name for the item. Will be used as ITEMNAME in MESSAGE_ONBUY and MESSAGE_ONSELL if defined. Default value is nil (ItemType(itemId):getName() will be used)
 	function ShopModule:addSellableItem(names, itemid, cost, realName, itemSubType)
 		if SHOPMODULE_MODE ~= SHOPMODULE_MODE_TALK then
-			if itemSubType == nil then
-				itemSubType = 0
-			end
+			itemSubType = itemSubType or 0
 			local it = ItemType(itemid)
+
 			if it:getId() ~= 0 then
 				local shopItem = self:getShopItem(itemid, itemSubType)
 				if shopItem == nil then
-					self.npcHandler.shopItems[#self.npcHandler.shopItems + 1] = {id = itemid, buy = 0, sell = cost, subType = itemSubType, name = realName or it:getName()}
+					self.npcHandler.shopItems[#self.npcHandler.shopItems + 1] = {
+						id = itemid,
+						buy = 0, -- FIX: was -1
+						sell = cost,
+						subType = itemSubType,
+						name = realName or it:getName()
+					}
 				else
 					if shopItem.buy > 0 and cost > shopItem.buy then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem: Sell price higher than buy price: (".. shopItem.name ..")")
+						print("[Warning : " .. Npc():getName() .. "] NpcSystem: Sell price higher than buy price: (" .. shopItem.name .. ")")
 					end
 					shopItem.sell = cost
 				end
@@ -927,7 +938,7 @@ if Modules == nil then
 		end
 
 		if names and SHOPMODULE_MODE ~= SHOPMODULE_MODE_TRADE then
-			for i, name in pairs(names) do
+			for _, name in pairs(names) do
 				local parameters = {
 					itemid = itemid,
 					cost = cost,
@@ -936,10 +947,7 @@ if Modules == nil then
 					realName = realName or ItemType(itemid):getName()
 				}
 
-				keywords = {}
-				keywords[#keywords + 1] = "sell"
-				keywords[#keywords + 1] = name
-
+				local keywords = {"sell", name}
 				local node = self.npcHandler.keywordHandler:addKeyword(keywords, ShopModule.tradeItem, parameters)
 				node:addChildKeywordNode(self.yesNode)
 				node:addChildKeywordNode(self.noNode)
@@ -961,7 +969,7 @@ if Modules == nil then
 			return false
 		end
 
-		if shopItem.buy == 0 then
+		if shopItem.buy == -1 then
 			error("[ShopModule.onSell] attempt to buy a non-buyable item")
 			return false
 		end
@@ -979,6 +987,8 @@ if Modules == nil then
 			[TAG_ITEMNAME] = shopItem.name
 		}
 
+		-- local totalMoney = player:getMoney() + player:getBankBalance() -- (earlier FIX)
+		-- if totalMoney < totalCost then
 		if player:getTotalMoney() < totalCost then
 			local msg = self.npcHandler:getMessage(MESSAGE_NEEDMONEY)
 			msg = self.npcHandler:parseMessage(msg, parseInfo)
@@ -1028,7 +1038,7 @@ if Modules == nil then
 			return false
 		end
 
-		if shopItem.sell == 0 then
+		if shopItem.sell == -1 then
 			error("[ShopModule.onSell] attempt to sell a non-sellable item")
 			return false
 		end

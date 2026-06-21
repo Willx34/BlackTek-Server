@@ -58,6 +58,9 @@ global_startup.onStartup = function()
 			end
 		end
 	end
+
+	-- Permanent daylight for dev/test (revert by setting default_world_light = true in gameplay.toml)
+	setWorldLight(250, 215)
 end
 
 global_startup:type("startup")
