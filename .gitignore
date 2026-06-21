@@ -26,3 +26,15 @@ db-data
 
 # Log files
 blacktek.log
+
+# Local boot/run logs
+boot*.log
+*.output
+
+# Incremental linker files
+*.ilk
+
+# Local map backup
+/data/world/_backup_forgotten/
+/data/world/realmap1098.otbm
+/config/database.toml

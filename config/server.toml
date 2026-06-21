@@ -11,8 +11,8 @@ motd        = "Welcome to The Black Tek Server!"
 [world]
 # Valid values: "pvp", "no-pvp", "pvp-enforced"
 type            = "pvp"
-map_name        = "forgotten"
-map_author      = "Unknown"
+map_name        = "realmap1098"
+map_author      = "ORTS / real-map 10.98"
 assets_dat_path = "data/items/assets.dat"
 
 [startup]
@@ -45,8 +45,8 @@ free_premium            = false
 online_offline_charlist = false
 
 [account_manager]
-enabled             = true
-allow_no_pass_login = true
+enabled             = false
+allow_no_pass_login = false
 password            = "1"
 position_x          = 0
 position_y          = 0

@@ -1,0 +1,12 @@
+# Database connection configuration — EXAMPLE
+# Copy this file to `database.toml` and fill in your local credentials.
+# database.toml is git-ignored so real credentials never reach GitHub.
+
+[mysql]
+host               = "127.0.0.1"
+user               = "forgottenserver"
+pass               = ""            # set your local MariaDB password here
+database           = "forgottenserver"
+port               = 3306
+socket             = ""
+optimize_on_startup = false
