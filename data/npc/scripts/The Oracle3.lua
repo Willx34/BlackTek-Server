@@ -1,7 +1,6 @@
  local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
-local destination = Position(32206, 32152, 7)
 
 local vocation = {}
 local town = {}
@@ -66,7 +65,7 @@ local function greetCallback(cid)
 		npcHandler:resetNpc(cid)
 		return false
 	elseif level > 31 then
-		npcHandler:say(player:getName() ..", I CAN'T LET YOU LEAVE - YOU ARE TOO STRONG ALREADY! YOU CAN ONLY LEAVE WITH LEVEL 9 OR LOWER.", cid)
+		npcHandler:say(player:getName() ..", I CAN'T LET YOU LEAVE - YOU ARE TOO STRONG ALREADY! YOU CAN ONLY LEAVE ROOKGAARD BEFORE REACHING LEVEL 32.", cid)
 		npcHandler:resetNpc(cid)
 		return false
 	elseif player:getVocation():getId() > 0 then
@@ -112,9 +111,10 @@ local function creatureSayCallback(cid, type, msg)
 		if msgcontains(msg, "yes") then
 			npcHandler:say("SO BE IT!", cid)
 			player:setVocation(Vocation(vocation[cid]))
-			player:setTown(Town(town[cid]))
+			local newTown = Town(town[cid])
+			player:setTown(newTown)
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			player:teleportTo(destination)
+			player:teleportTo(newTown:getTemplePosition())
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have received a backpack with starting items for reaching the mainlands.")
 			local targetVocation = config.vocations[Vocation(vocation[cid]):getName():lower()]

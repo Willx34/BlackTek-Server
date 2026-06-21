@@ -61,6 +61,30 @@ global_startup.onStartup = function()
 
 	-- Permanent daylight for dev/test (revert by setting default_world_light = true in gameplay.toml)
 	setWorldLight(250, 215)
+
+	-- Spawn the leave-Rookgaard Oracle. This real map has no Oracle placed in the
+	-- .otbm, so create it programmatically next to the Rookgaard temple (town 6).
+	-- It promotes a level 8+ vocationless Rook and teleports them to their chosen
+	-- mainland town (see data/npc/scripts/The Oracle3.lua via data/npc/Oracle.xml).
+	local rookgaard = Town(6)
+	if rookgaard then
+		local t = rookgaard:getTemplePosition()
+		local offsets = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}, {2, 0}, {-2, 0}, {0, 0}}
+		local oracleNpc
+		for _, o in ipairs(offsets) do
+			local pos = Position(t.x + o[1], t.y + o[2], t.z)
+			oracleNpc = Game.createNpc("Oracle", pos)
+			if oracleNpc then
+				print(string.format(">> Rookgaard Oracle spawned at %d, %d, %d", pos.x, pos.y, pos.z))
+				break
+			end
+		end
+		if not oracleNpc then
+			print(">> WARNING: could not spawn the Rookgaard Oracle near temple " .. t.x .. "," .. t.y .. "," .. t.z)
+		end
+	else
+		print(">> WARNING: Rookgaard (town 6) not found; Oracle not spawned")
+	end
 end
 
 global_startup:type("startup")
