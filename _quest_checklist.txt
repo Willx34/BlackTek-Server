@@ -1,0 +1,366 @@
+kind	id	x,y,z	itemid	script
+uid	9520	33593,32643,14	9825	Novos/alavanca.lua
+uid	9521	33387,32457,14	9825	Novos/alavanca1.lua
+uid	9522	33229,31499,13	9825	Novos/alavanca2.lua
+uid	9523	33379,32308,14	9825	Novos/alavanca3.lua
+uid	9524	33455,32356,13	9825	Novos/alavanca4.lua
+uid	9525	33680,32740,11	9825	Novos/alavanca5.lua
+uid	9526	33418,32849,11	9825	Novos/alavanca6.lua
+uid	9527	33434,32784,13	9825	Novos/alavanca7.lua
+uid	9528	33404,32467,13	9825	Novos/alavanca8.lua
+uid	9529	32079,31312,13	9825	Novos/novo1.lua
+uid	9530	32272,31373,14	9825	Novos/novo2.lua
+uid	9531	32334,31283,14	9825	Novos/novo3.lua
+uid	9532	32309,31247,14	9825	Novos/novo4.lua
+uid	9533	32207,31283,14	9825	Novos/novo5.lua
+aid	50258	32800,31959,7	2720	bkquest.lua
+aid	9010	31418,31971,8	5739	daram quest.lua
+aid	61221	32584,31401,8	8268	dwarven.lua
+aid	42139	32680,31509,12	10035	escada.lua
+aid	12441	32965,31457,2	9583	espelho.lua
+aid	9118	32992,31539,1	1945	farmine/elevatorLever.lua
+aid	9119	32992,31539,4	1945	farmine/elevatorLever.lua
+aid	9120	32994,31547,4	1945	farmine/elevatorLever.lua
+aid	9121	33062,31527,10	1945	farmine/elevatorLever.lua
+aid	12141	33187,31205,6	8718	farmine/templeofequilibrium_vines.lua
+aid	12142	33187,31205,7	9710	farmine/templeofequilibrium_vines.lua
+uid	3152	32024,32830,4	5687	flor.lua
+uid	25610	33579,31297,11	1740	gray island/jaul.lua
+uid	25612	33414,31235,11	1740	gray island/obujos.lua
+uid	25611	33632,31259,11	1740	gray island/tanjis.lua
+uid	12025	32367,31058,7	7266	inukaya.lua
+uid	12026	32409,31066,7	7266	inukaya2.lua
+aid	50012	32637,31881,2	1945	kazordoon/elevatorLever.lua
+aid	50011	32637,31881,7	1946	kazordoon/elevatorLever.lua
+aid	50137	32553,31931,7	7131	kazordoon/oreWagons.lua
+aid	50138	32601,31875,7	7132	kazordoon/oreWagons.lua
+aid	50159	32604,31901,9	7131	kazordoon/oreWagons.lua
+aid	50230	32615,31899,9	7132	kazordoon/oreWagons.lua
+aid	50231	32617,31899,9	7132	kazordoon/oreWagons.lua
+aid	50232	32619,31899,9	7132	kazordoon/oreWagons.lua
+aid	50233	32621,31899,9	7132	kazordoon/oreWagons.lua
+aid	50158	32604,31904,9	7131	kazordoon/oreWagons.lua
+aid	50157	32604,31906,9	7131	kazordoon/oreWagons.lua
+aid	50156	32604,31909,9	7131	kazordoon/oreWagons.lua
+aid	50139	32577,31928,0	7131	kazordoon/oreWagons.lua
+aid	50144	32624,31920,11	7132	kazordoon/oreWagons.lua
+aid	50145	32627,31920,11	7132	kazordoon/oreWagons.lua
+aid	50146	32629,31920,11	7132	kazordoon/oreWagons.lua
+aid	50147	32632,31920,11	7132	kazordoon/oreWagons.lua
+aid	50152	32653,31901,8	7132	kazordoon/oreWagons.lua
+aid	50153	32656,31901,8	7132	kazordoon/oreWagons.lua
+aid	50154	32658,31901,8	7132	kazordoon/oreWagons.lua
+aid	50155	32661,31901,8	7132	kazordoon/oreWagons.lua
+aid	50143	32574,31969,9	7131	kazordoon/oreWagons.lua
+aid	50142	32574,31972,9	7131	kazordoon/oreWagons.lua
+aid	50141	32574,31975,9	7131	kazordoon/oreWagons.lua
+aid	50140	32574,31978,9	7131	kazordoon/oreWagons.lua
+aid	50136	32618,31944,7	7132	kazordoon/oreWagons.lua
+aid	50148	32672,31974,15	7132	kazordoon/oreWagons.lua
+aid	50149	32675,31974,15	7132	kazordoon/oreWagons.lua
+aid	50150	32677,31974,15	7132	kazordoon/oreWagons.lua
+aid	50151	32680,31974,15	7132	kazordoon/oreWagons.lua
+aid	50237	32604,31908,3	1945	kazordoon/stone.lua
+aid	50238	32603,31901,4	1945	kazordoon/trapdoor.lua
+aid	19079	33657,31657,7	25406	krailos.lua
+aid	41345	33119,32247,9	24314	lionrock.lua
+aid	41356	33146,32341,8	2843	lionrock.lua
+aid	41355	33137,32351,6	23765	lionrock.lua
+aid	41354	33133,32359,6	23759	lionrock.lua
+uid	12027	32303,31081,7	7266	nibelor.lua
+uid	12028	32327,31045,7	7266	nibelor1.lua
+aid	19021	33487,32070,8	12875	ora.lua
+aid	19022	33573,31953,7	22830	ora1.lua
+aid	50001	33639,31903,5	23422	oramond/lever.lua
+aid	50000	33639,31903,6	23429	oramond/lever.lua
+aid	50133	32794,33062,9	1945	other/daramratlever.lua
+aid	50134	32790,33059,9	1946	other/daramratlever1.lua
+aid	5556	31536,32104,7	11062	other/ghostship.lua
+aid	50009	32936,32752,11	13500	other/horestisjars.lua
+aid	50006	32991,32721,8	13500	other/horestisjars.lua
+aid	50010	32979,32737,12	13500	other/horestisjars.lua
+aid	50007	32940,32778,9	13500	other/horestisjars.lua
+aid	50008	32985,32772,10	13500	other/horestisjars.lua
+aid	22840	33638,31903,5	23428	other/oramond_elevador.lua
+aid	22841	33638,31903,6	23432	other/oramond_elevador.lua
+aid	50035	32430,32191,9	1945	other/thais_exhibition.lua
+aid	50034	32438,32191,9	1945	other/thais_exhibition.lua
+aid	50056	32440,32191,10	1945	other/thais_exhibition.lua
+aid	50055	32448,32191,10	1945	other/thais_exhibition.lua
+aid	50054	32456,32191,10	1945	other/thais_exhibition.lua
+aid	50052	32468,32191,10	1945	other/thais_exhibition.lua
+aid	50051	32476,32191,10	1945	other/thais_exhibition.lua
+aid	50050	32484,32191,10	1945	other/thais_exhibition.lua
+aid	50048	32496,32191,10	1945	other/thais_exhibition.lua
+aid	50047	32504,32191,10	1945	other/thais_exhibition.lua
+aid	50037	32399,32200,9	1945	other/thais_exhibition.lua
+aid	50036	32404,32195,9	1945	other/thais_exhibition.lua
+aid	50032	32414,32201,9	1945	other/thais_exhibition.lua
+aid	50031	32412,32204,9	1945	other/thais_exhibition.lua
+aid	50033	32435,32197,9	1945	other/thais_exhibition.lua
+aid	50038	32440,32201,10	1945	other/thais_exhibition.lua
+aid	50030	32399,32209,9	1945	other/thais_exhibition.lua
+aid	50053	32461,32197,10	1945	other/thais_exhibition.lua
+aid	50039	32456,32201,10	1945	other/thais_exhibition.lua
+aid	50040	32468,32201,10	1945	other/thais_exhibition.lua
+aid	50041	32476,32201,10	1945	other/thais_exhibition.lua
+aid	50049	32489,32197,10	1945	other/thais_exhibition.lua
+aid	50042	32484,32201,10	1945	other/thais_exhibition.lua
+aid	50043	32496,32201,10	1945	other/thais_exhibition.lua
+aid	50046	32512,32191,10	1945	other/thais_exhibition.lua
+aid	50045	32517,32197,10	1945	other/thais_exhibition.lua
+aid	50044	32512,32201,10	1945	other/thais_exhibition.lua
+aid	45440	33053,31020,7	5862	outfit.lua
+aid	19075	32679,31609,8	21397	pared.lua
+aid	19074	33487,32090,9	1429	placa.lua
+aid	2214	31621,32056,8	6202	quests/annihilator/door.lua
+uid	2208	33226,31671,13	1945	quests/annihilator/lever.lua
+uid	3110	32201,31154,7	7142	quests/barbarian test/mead.lua
+uid	2007	33290,31715,12	1945	quests/behemoth/lever.lua
+uid	3124	32776,31804,10	18229	quests/bigfoot burden/music.lua
+uid	3125	32781,31807,10	18230	quests/bigfoot burden/music.lua
+uid	3126	32771,31810,10	18231	quests/bigfoot burden/music.lua
+uid	3127	32777,31812,10	18232	quests/bigfoot burden/music.lua
+uid	3147	32822,31744,10	12664	quests/bigfoot burden/rewards.lua
+uid	3148	33016,31872,9	18472	quests/bigfoot burden/rewards.lua
+uid	3149	33024,31884,9	18473	quests/bigfoot burden/rewards.lua
+uid	3150	33028,31900,9	18474	quests/bigfoot burden/rewards.lua
+uid	3143	33101,31908,10	18458	quests/bigfoot burden/warzones.lua
+aid	55021	33080,32582,3	1945	quests/chayenne realm quest/lever.lua
+aid	55023	32827,31493,6	2844	quests/chayenne realm quest/reward.lua
+uid	3164	33318,31410,8	1740	quests/children of the revolution/Mission3ZeeKillingFieldzzChest.lua
+aid	2003	30676,32662,7	8695	quests/daramsystem1.lua
+uid	2005	33330,31574,15	1945	quests/demon helmet/lever.lua
+uid	9008	32710,32393,8	1740	quests/demon oak/demonOakChest.lua
+uid	9009	32712,32393,8	1740	quests/demon oak/demonOakChest.lua
+uid	9010	32714,32393,8	1740	quests/demon oak/demonOakChest.lua
+uid	9011	32716,32393,8	1740	quests/demon oak/demonOakChest.lua
+uid	9007	32710,32398,7	8059	quests/demon oak/demonOakGravestone.lua
+uid	1912	32673,32086,8	1945	quests/desertdungeonquest.lua
+aid	4250	32792,31579,7	1945	quests/draconia/walls.lua
+aid	4249	32792,31595,7	1945	quests/draconia/walls.lua
+uid	3041	32837,32221,14	1945	quests/dreamer challenge/documentsLever.lua
+uid	3042	32836,32229,14	1945	quests/dreamer challenge/documentsLever1.lua
+uid	3043	32833,32224,14	1945	quests/dreamer challenge/documentsLever2.lua
+uid	3045	32785,32222,14	1945	quests/dreamer challenge/documentsLever3.lua
+uid	3046	32784,32230,14	1945	quests/dreamer challenge/documentsLever4.lua
+uid	3047	32781,32225,14	1945	quests/dreamer challenge/documentsLever5.lua
+uid	2004	32873,32263,14	1945	quests/dreamer challenge/stoneTeleport.lua
+uid	2272	32838,32263,14	1945	quests/dreamer challenge/ticTac.lua
+aid	8033	32836,32278,14	1945	quests/dreamer challenge/ticTacTeleport.lua
+uid	2249	32761,32289,14	1945	quests/dreamer challenge/walls.lua
+uid	2247	32761,32291,14	1945	quests/dreamer challenge/walls.lua
+uid	2248	32763,32289,14	1945	quests/dreamer challenge/walls.lua
+uid	2246	32763,32291,14	1945	quests/dreamer challenge/walls.lua
+uid	9026	33262,31831,12	1945	quests/elemental spheres/OAELever.lua
+uid	9025	33273,31831,12	1945	quests/elemental spheres/OAELever.lua
+uid	9027	33262,31840,12	1945	quests/elemental spheres/OAELever.lua
+uid	9028	33273,31840,12	1945	quests/elemental spheres/OAELever.lua
+uid	9024	33269,31835,10	1945	quests/elemental spheres/lever.lua
+uid	3017	32321,31455,9	7295	quests/explorer society/dragon.lua
+aid	4630	32969,32421,9	21392	quests/gravedigger/amforas.lua
+aid	4631	33022,32329,10	21477	quests/gravedigger/brain.lua
+uid	4663	33017,32358,11	1716	quests/gravedigger/caixa.lua
+aid	4669	32994,32442,11	1718	quests/gravedigger/estante.lua
+aid	4651	32952,32384,13	21458	quests/gravedigger/inscriptions.lua
+aid	4653	32954,32413,13	21456	quests/gravedigger/inscriptions.lua
+aid	4652	32970,32388,13	21457	quests/gravedigger/inscriptions.lua
+aid	4650	32972,32412,11	10029	quests/gravedigger/palanca.lua
+aid	4662	33007,32384,10	21461	quests/gravedigger/scroll.lua
+aid	4636	32998,32416,11	21429	quests/gravedigger/statue.lua
+aid	5390	33109,32530,3	1366	quests/green djinn/tear.lua
+aid	50027	32625,31698,11	1945	quests/hellgatelever.lua
+aid	33216	32406,32794,9	6123	quests/hunter outfit/allHymnPianoTeleport.lua
+aid	23701	32869,31316,10	8894	quests/in service of yalahar/YalaharMachineWargolems.lua
+aid	23700	32882,31315,10	8896	quests/in service of yalahar/YalaharMachineWargolems.lua
+uid	3086	32783,31166,10	9767	quests/in service of yalahar/lastFight.lua
+uid	3092	32743,31161,5	9534	quests/in service of yalahar/mechanism.lua
+uid	3091	32743,31164,5	9534	quests/in service of yalahar/mechanism.lua
+uid	3096	32729,31199,5	9531	quests/in service of yalahar/mechanism.lua
+uid	3095	32734,31199,5	9531	quests/in service of yalahar/mechanism.lua
+uid	9235	32775,31118,7	9534	quests/in service of yalahar/mechanism.lua
+uid	9236	32778,31118,7	9534	quests/in service of yalahar/mechanism.lua
+uid	3098	32775,31141,5	9531	quests/in service of yalahar/mechanism.lua
+uid	3097	32775,31145,5	9531	quests/in service of yalahar/mechanism.lua
+uid	3099	32869,31203,5	9531	quests/in service of yalahar/mechanism.lua
+uid	3100	32874,31203,5	9531	quests/in service of yalahar/mechanism.lua
+uid	3102	32853,31251,5	9534	quests/in service of yalahar/mechanism.lua
+uid	3101	32857,31248,5	9534	quests/in service of yalahar/mechanism.lua
+uid	3093	32832,31266,5	9534	quests/in service of yalahar/mechanism.lua
+uid	3094	32832,31269,5	9534	quests/in service of yalahar/mechanism.lua
+uid	9031	32682,31242,6	9736	quests/in service of yalahar/morikSummon.lua
+uid	3081	32786,31286,8	5288	quests/in service of yalahar/mrWestDoor.lua
+uid	3082	32771,31355,5	6261	quests/in service of yalahar/mrWestDoor.lua
+uid	3088	32776,31204,7	1748	quests/in service of yalahar/reward.lua
+uid	3090	32776,31206,7	1748	quests/in service of yalahar/reward.lua
+uid	3089	32776,31208,7	1748	quests/in service of yalahar/reward.lua
+uid	9018	33224,31722,11	1945	quests/inquisition/brotherLever.lua
+uid	9017	33240,31722,11	1945	quests/inquisition/brotherLever.lua
+uid	9019	33224,31734,11	1945	quests/inquisition/brotherLever.lua
+uid	9020	33240,31734,11	1945	quests/inquisition/brotherLever.lua
+uid	9021	32320,32258,9	5105	quests/inquisition/rewardDoor.lua
+uid	1304	32314,32245,9	1740	quests/inquisition/rewards.lua
+uid	1308	32316,32245,9	1740	quests/inquisition/rewards.lua
+uid	1301	32318,32245,9	1740	quests/inquisition/rewards.lua
+uid	1307	32320,32245,9	1740	quests/inquisition/rewards.lua
+uid	1305	32322,32245,9	1740	quests/inquisition/rewards.lua
+uid	1306	32324,32245,9	1740	quests/inquisition/rewards.lua
+uid	1303	32326,32245,9	1740	quests/inquisition/rewards.lua
+uid	1302	32328,32245,9	1740	quests/inquisition/rewards.lua
+uid	1300	32330,32245,9	1740	quests/inquisition/rewards.lua
+aid	1004	33146,31639,11	5114	quests/inquisition/ungreez.lua
+aid	2002	32779,31979,9	8703	quests/inquisition/vampireHunt.lua
+uid	9177	32778,32232,8	1945	quests/iron_helmet.lua
+uid	3070	33281,32447,8	8268	quests/koshei amulet/switch.lua
+aid	50129	32413,32230,10	1945	quests/liferinglever.lua
+uid	9511	33416,32102,10	1945	quests/oramond/darkTrail.lua
+uid	9519	33582,31844,10	1945	quests/oramond/ora.lua
+uid	9192	33172,31896,8	1945	quests/orcedron.lua
+uid	50105	32821,32346,13	1945	quests/pits of inferno/bazirMazeLever.lua
+aid	39512	32739,32392,14	1847	quests/pits of inferno/bazirMirror.lua
+aid	39511	32739,32392,14	6434	quests/pits of inferno/bazirMirror.lua
+uid	50102	32808,32322,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50095	32815,32333,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50096	32824,32323,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50101	32814,32348,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50100	32814,32349,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50104	32821,32341,13	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50098	32803,32353,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50099	32804,32357,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50097	32811,32357,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50103	32802,32362,15	1945	quests/pits of inferno/bazirWrongLevers.lua
+uid	50106	32915,32215,15	1945	quests/pits of inferno/fireThroneLever.lua
+aid	8815	32805,32318,11	1360	quests/pits of inferno/fountain.lua
+uid	3302	32851,32308,11	1945	quests/pits of inferno/ladderLevers.lua
+uid	3301	32862,32312,11	1945	quests/pits of inferno/ladderLevers.lua
+uid	2055	32846,32318,12	1945	quests/pits of inferno/levers.lua
+uid	2059	32847,32332,13	1945	quests/pits of inferno/levers.lua
+uid	2065	32848,32335,12	1945	quests/pits of inferno/levers.lua
+uid	2050	32874,32334,12	1945	quests/pits of inferno/levers.lua
+uid	2054	32887,32330,12	1945	quests/pits of inferno/levers.lua
+uid	2051	32891,32328,14	1945	quests/pits of inferno/levers.lua
+uid	2060	32886,32337,13	1945	quests/pits of inferno/levers.lua
+uid	2053	32889,32349,15	1945	quests/pits of inferno/levers.lua
+uid	2052	32843,32352,14	1945	quests/pits of inferno/levers.lua
+uid	2058	32843,32359,12	1945	quests/pits of inferno/levers.lua
+uid	2057	32853,32359,14	1945	quests/pits of inferno/levers.lua
+uid	2062	32850,32366,13	1945	quests/pits of inferno/levers.lua
+uid	2063	32859,32364,13	1945	quests/pits of inferno/levers.lua
+uid	2064	32874,32354,14	1945	quests/pits of inferno/levers.lua
+uid	2061	32874,32365,13	1945	quests/pits of inferno/levers.lua
+uid	2056	32887,32355,13	1945	quests/pits of inferno/levers.lua
+aid	50160	32853,32318,9	1945	quests/pits of inferno/mazeStone.lua
+uid	1021	32800,32339,11	1945	quests/pits of inferno/oil.lua
+uid	3300	32850,32268,10	1945	quests/pits of inferno/stoneLever.lua
+uid	3304	32826,32263,12	1945	quests/pits of inferno/trapLever.lua
+uid	2025	32820,32321,10	1945	quests/pits of inferno/walls.lua
+uid	2026	32820,32345,10	1945	quests/pits of inferno/walls.lua
+uid	2028	32847,32327,10	1945	quests/pits of inferno/walls.lua
+uid	2027	32847,32339,10	1945	quests/pits of inferno/walls.lua
+uid	3118	32514,32248,8	3058	quests/postman/corpo.lua
+aid	42535	32455,31967,14	1225	quests/sam old backpack/door.lua
+aid	4225	32011,31709,7	8571	quests/sea of light/iceCube.lua
+aid	12574	32576,31862,14	1945	quests/secret service/lever.lua
+aid	4210	32180,31633,8	1945	quests/senjaCastleLever.lua
+aid	5633	33152,32866,8	1945	quests/serpentineTowerLever.lua
+aid	5632	33151,32861,7	2058	quests/serpentineTowerTorch.lua
+aid	28100	32227,31052,7	5132	quests/svargrond arena/arena_door.lua
+aid	27100	32227,31059,7	5132	quests/svargrond arena/arena_door.lua
+aid	26100	32227,31066,7	5132	quests/svargrond arena/arena_door.lua
+aid	13100	32233,31098,7	5132	quests/svargrond arena/arena_door.lua
+aid	2000	31987,31223,7	1738	quests/system.lua
+aid	28300	32231,31051,7	1740	quests/system.lua
+aid	27300	32231,31058,7	1740	quests/system.lua
+aid	26300	32231,31065,7	1740	quests/system.lua
+aid	12513	32309,32209,8	1717	quests/system.lua
+aid	2016	32749,32341,14	1738	quests/system.lua
+aid	12374	33076,31170,8	1741	quests/system.lua
+aid	2215	33227,31656,13	1740	quests/system.lua
+aid	10544	32804,32229,11	1740	quests/system.lua
+aid	2001	32258,31098,10	2843	quests/system2.lua
+aid	50023	32227,32278,8	1945	quests/thaislighthouselever.lua
+aid	50024	32225,32285,10	1945	quests/thaislighthouselever.lua
+aid	50125	32560,31406,15	1387	quests/the hidden city of beregar/coalExitWagons.lua
+aid	50117	32699,31492,11	7131	quests/the hidden city of beregar/coalWagon.lua
+aid	50128	32578,31488,9	7131	quests/the hidden city of beregar/deeperMineWagon.lua
+aid	50112	32570,31508,9	7131	quests/the hidden city of beregar/gapWagon.lua
+aid	50099	32603,31339,11	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50098	32548,31408,11	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50104	32700,31449,15	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50107	32688,31472,13	7132	quests/the hidden city of beregar/oreWagon.lua
+aid	50101	32577,31508,9	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50100	32599,31505,13	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50102	32628,31514,9	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50105	32662,31496,13	7132	quests/the hidden city of beregar/oreWagon.lua
+aid	50103	32683,31508,10	7131	quests/the hidden city of beregar/oreWagon.lua
+aid	50108	32703,31506,12	7132	quests/the hidden city of beregar/oreWagon.lua
+aid	50106	32720,31488,15	7131	quests/the hidden city of beregar/oreWagon.lua
+uid	3157	33079,31014,2	1946	quests/the new frontier/arena.lua
+aid	8005	33064,31489,15	1946	quests/the new frontier/lever.lua
+aid	8006	33056,31527,10	1945	quests/the new frontier/lever.lua
+uid	3156	33170,31248,11	11028	quests/the new frontier/retreat.lua
+uid	3153	33021,31536,4	10762	quests/the new frontier/vine.lua
+uid	3154	33021,31536,6	10761	quests/the new frontier/vine.lua
+uid	3400	32614,32173,9	1945	quests/the outlaw camp/oven.lua
+uid	3402	32616,32222,10	1945	quests/the outlaw camp/powerburn.lua
+uid	3401	32594,32212,9	1945	quests/the outlaw camp/powerswitch.lua
+aid	50021	32246,31861,14	5114	quests/the queen of the banshees/lastDoor.lua
+uid	50001	32255,31892,10	1945	quests/the queen of the banshees/theFirstSeal.lua
+uid	50002	32266,31861,11	1945	quests/the queen of the banshees/theFirstSeal.lua
+uid	50000	32256,31892,10	1945	quests/the queen of the banshees/theFirstSeal.lua
+uid	50005	32310,31975,13	1945	quests/the queen of the banshees/theSixthSeal.lua
+uid	50007	32312,31975,13	1945	quests/the queen of the banshees/theSixthSeal.lua
+uid	50009	32314,31975,13	1945	quests/the queen of the banshees/theSixthSeal.lua
+uid	50006	32310,31976,13	1945	quests/the queen of the banshees/theSixthSeal.lua
+uid	50008	32312,31976,13	1945	quests/the queen of the banshees/theSixthSeal.lua
+uid	50010	32314,31976,13	1945	quests/the queen of the banshees/theSixthSeal.lua
+uid	50018	32220,31842,15	1946	quests/the queen of the banshees/theThirdSeal.lua
+uid	50015	32220,31843,15	1946	quests/the queen of the banshees/theThirdSeal.lua
+uid	50017	32220,31844,15	1946	quests/the queen of the banshees/theThirdSeal.lua
+uid	50016	32220,31845,15	1946	quests/the queen of the banshees/theThirdSeal.lua
+uid	50019	32220,31846,15	1946	quests/the queen of the banshees/theThirdSeal.lua
+aid	12502	32337,31814,6	8719	quests/the thieves guild/climbingVine.lua
+aid	12501	32337,31814,7	8718	quests/the thieves guild/climbingVine.lua
+aid	12505	32359,32787,6	8769	quests/the thieves guild/fishnappingDoor.lua
+aid	12105	33188,32660,15	2367	quests/theancienttombs/AncientRuinsTombInstruments.lua
+aid	12107	33118,32761,14	1945	quests/theancienttombs/OasisTombLeverDoor.lua
+aid	50243	33055,32487,13	1945	quests/theancienttombs/activeTeleportSwitches.lua
+aid	50242	33320,32682,14	1945	quests/theancienttombs/activeTeleportSwitches.lua
+aid	50244	33176,32880,11	1945	quests/theancienttombs/activeTeleportSwitches.lua
+aid	12129	32756,32494,11	1945	quests/theapecity/Mission9TheDeepestCatacombsLever.lua
+uid	12131	32862,32555,11	1945	quests/theapecity/Mission9TheDeepestCatacombsLever.lua
+uid	21137	32081,31028,2	2843	quests/tinder box/tinderBoxQuest.lua
+uid	50023	32573,32121,7	1945	quests/triangletowerlever.lua
+uid	12335	32982,31431,1	8635	quests/unnatural selection/Mission5RayofLight.lua
+uid	3174	33351,31069,9	10044	quests/wrath of the emperor/Mission01Lights.lua
+uid	3172	33359,31070,9	10044	quests/wrath of the emperor/Mission01Lights.lua
+uid	3171	33370,31067,9	10044	quests/wrath of the emperor/Mission01Lights.lua
+uid	3173	33349,31075,8	10044	quests/wrath of the emperor/Mission01Lights.lua
+uid	12354	32801,32640,15	1945	quests/wrath of the emperor/Mission04SacramentoftheSnakeSceptre.lua
+uid	3184	33078,31079,13	1945	quests/wrath of the emperor/Mission08UninvitedGuestsLever.lua
+uid	3185	33082,31109,2	1945	quests/wrath of the emperor/Mission08UninvitedGuestsLever.lua
+uid	3200	33073,31173,8	12387	quests/wrath of the emperor/Mission12JustRewards.lua
+aid	14247	33118,32790,14	1945	rahemos.lua
+aid	50239	32098,32204,8	1945	rookgaard/SewerLever.lua
+aid	5641	32172,32169,7	2725	rookgaard/banana_quest.lua
+aid	5638	32148,32105,11	1945	rookgaard/bearroom_quest_lever.lua
+aid	5639	32084,32181,8	405	rookgaard/doublet_quest.lua
+aid	5640	32005,32139,3	2103	rookgaard/honeyflower_quest.lua
+aid	5637	32182,32145,11	1946	rookgaard/katana_quest_lever.lua
+aid	42503	32644,32183,6	13172	rottin wood quest/broken wall.lua
+aid	42505	32652,32200,5	13172	rottin wood quest/broken wall.lua
+aid	42504	32660,32201,7	13171	rottin wood quest/broken wall.lua
+aid	42501	32647,32216,7	13170	rottin wood quest/broken wall.lua
+aid	42502	32660,32213,7	13170	rottin wood quest/broken wall.lua
+aid	50109	32571,31508,9	7644	vagao.lua
+aid	42150	32700,31452,13	7132	vagao1.lua
+aid	50245	32559,31851,7	7132	vagaohouse1.lua
+aid	50248	32519,31825,9	7131	vagaohouse10.lua
+aid	50246	32527,31840,9	7132	vagaohouse2.lua
+aid	50247	32515,31828,9	7131	vagaohouse3.lua
+aid	50249	32501,31827,9	7131	vagaohouse4.lua
+aid	50250	32494,31834,9	7132	vagaohouse5.lua
+aid	50251	32488,31812,9	7132	vagaohouse6.lua
+aid	50252	32499,31806,9	7131	vagaohouse7.lua
+aid	50253	32511,31805,9	7131	vagaohouse8.lua
+aid	50254	32516,31808,9	7132	vagaohouse9.lua
